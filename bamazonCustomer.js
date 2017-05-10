@@ -4,7 +4,7 @@ var connection = mysql.createConnection({
     host: "127.0.0.1",
     port: 3306,
     user: "root",
-    password: "PASSWORD REMOVED",
+    password: "nissan11",
     database: "bamazon"
 });
 
@@ -37,9 +37,9 @@ var order = function() {
             }
 
         ]).then(function(answer) {
-            // for (i = 0; i < res.length; i++) {
-            //     var ID = [];
-            //     ID.push(res[i].item_id);
+            for (i = 0; i < res.length; i++) {
+                var ID = [];
+                ID.push(res[i].item_id);
                 if (answer.action == res[i].item_id) {
                     console.log("FINALLY!");
                     connection.query("UPDATE products SET ? WHERE ?"), {
@@ -53,19 +53,19 @@ var order = function() {
         });
     });
 };
-var units = function() {
-        connection.query("UPDATE products SET stock_quantity=? WHERE item_id = ?", function(err, res) {
-        	stock_quantity: answer.units,
-        	item_id: answer.action
-        }
-            inquirer.prompt([{
-                name: "units",
-                message: "How many units would you like to buy?",
-                type: "input"
-            }]).then(function(answer) {
+// var units = function() {
+//         connection.query("UPDATE products SET stock_quantity=? WHERE item_id = ?", function(err, res) {
+//         	stock_quantity: answer.units,
+//         	item_id: answer.action
+//         }
+//             inquirer.prompt([{
+//                 name: "units",
+//                 message: "How many units would you like to buy?",
+//                 type: "input"
+//             }]).then(function(answer) {
 
-            })
-        });
+//             })
+//         });
 
 
 products();
